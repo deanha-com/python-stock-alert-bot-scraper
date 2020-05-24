@@ -51,6 +51,7 @@ watch_list = {
     }
 }
 
+# print(watch_list)
 
 def checkPrice(symbol, low, high, live_data):
     if live_data < float(low):
@@ -65,7 +66,7 @@ def live_price_check():
     current_time = time.strftime("%H:%M:%S", t)
     print('---------------- > PRICE CHECK START :' + current_time)
 
-    for symbols in watch_list.iteritems():
+    for symbols in watch_list.items():
         symbolkey = symbols[0]
 
         # print('-')
@@ -75,9 +76,10 @@ def live_price_check():
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument('--log-level=3')
         chrome_options.add_argument("--disable-extensions")
 
-        driver = webdriver.Chrome("./chromedriver", options=chrome_options)
+        driver = webdriver.Chrome("./chromedriver.exe", options=chrome_options)
         start_url = "https://www.google.com/search?q="+symbolkey+"+stocks"
         driver.get(start_url)
 
@@ -92,7 +94,7 @@ def live_price_check():
 
     print('---------------- > PRICE CHECK COMPLETE')
 
-    Timer(1*60,live_price_check).start()
+    Timer(10*60,live_price_check).start()
 
 live_price_check() # Execute the code
 
@@ -110,4 +112,4 @@ live_price_check() # Execute the code
 
 ## Killing a script that is in progress
 # -----------------------------------------------------------------------------
-# pkill -9 -f scraper.py
+# pkill -9 -f scraper.py #macOs only
