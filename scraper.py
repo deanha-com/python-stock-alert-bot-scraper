@@ -79,7 +79,7 @@ def live_price_check():
         chrome_options.add_argument('--log-level=3')
         chrome_options.add_argument("--disable-extensions")
 
-        driver = webdriver.Chrome("./chromedriver.exe", options=chrome_options)
+        driver = webdriver.Chrome("./chromedriver", options=chrome_options)
         start_url = "https://www.google.com/search?q="+symbolkey+"+stocks"
         driver.get(start_url)
 
