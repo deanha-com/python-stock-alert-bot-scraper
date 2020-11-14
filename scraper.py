@@ -112,4 +112,5 @@ live_price_check() # Execute the code
 
 ## Killing a script that is in progress
 # -----------------------------------------------------------------------------
-# pkill -9 -f scraper.py #macOs only
+# pkill -9 -f scraper.py     #macOs only
+# pkill -9 python            #macOs only
