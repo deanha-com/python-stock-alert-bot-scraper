@@ -18,8 +18,8 @@ driver = webdriver.Chrome("./chromedriver", options=chrome_options)
 start_url = "https://www.gumtree.com/search?search_category=cars&search_location=se10&q="+keyword+"&min_price=&max_price="+max_price
 driver.get(start_url)
 
-# car = driver.find_element_by_css_selector(".listing-title")
+car = driver.find_element_by_css_selector(".listing-title").text
 print(driver)
-# print(car)
+print(car)
 driver.close()
 driver.quit()

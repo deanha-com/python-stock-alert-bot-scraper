@@ -36,18 +36,6 @@ watch_list = {
     "SDRY" : {
         "low" : 89,
         "high" : 180
-    },
-    "LSE:GYM" : {
-        "low" : 100,
-        "high" : 300
-    },
-    "LLOY" : {
-        "low" : 23,
-        "high" : 60
-    },
-    "NEX" : {
-        "low" : 100,
-        "high" : 300
     }
 }
 
@@ -74,16 +62,17 @@ def live_price_check():
         # print(watch_list[symbols[0]]['high'])
 
         chrome_options = Options()
-        chrome_options.add_argument("--headless")
+        # chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument('--log-level=3')
         chrome_options.add_argument("--disable-extensions")
 
-        driver = webdriver.Chrome("./chromedriver", options=chrome_options)
+        driver = webdriver.Chrome("./chromedriver.exe", options=chrome_options)
         start_url = "https://www.google.com/search?q="+symbolkey+"+stocks"
         driver.get(start_url)
 
         live_data = float(driver.find_element_by_class_name("NprOob").text.replace(',',''))
+        # live_data = float(driver.find_element_by_class_name("NprOob").text)
 
         print(symbolkey + ' @ ' + str(live_data))
         driver.close()
